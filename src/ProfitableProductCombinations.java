@@ -1,3 +1,5 @@
+import java.util.*;
+
 public class ProfitableProductCombinations {
 
     /*
@@ -20,4 +22,49 @@ public class ProfitableProductCombinations {
      * */
 
 
+    public static List<List<Integer>> findTriplets(int[] products){
+
+        Set<List<Integer>> uniqueTriplets = new LinkedHashSet<>();
+
+        for(int i = 0; i < products.length - 3; i++){
+
+            for(int j = i + 1; j < products.length -2; j++){
+                List<Integer> triplets = new ArrayList<>();
+                int target = 1000;
+
+                if(products[i] < target){
+                    target -= products[i];
+                    triplets.add(products[i]);
+                }else{
+                    break;
+                }
+                if(products[j] < target){
+                    target -= products[j];
+                    triplets.add(products[j]);
+                }else{
+                    break;
+                }
+                int sum = 0;
+                for(int k = j+1; k < products.length -1; k++){
+
+                    if(sum + products[k] <= target){
+                        sum += target;
+                    }
+                    if(sum == target){
+                        triplets.add(sum);
+                        break;
+                    }
+                    if(sum > target){
+                        break;
+                    }
+                }
+                if(triplets.size() == 3){
+                    uniqueTriplets.add(triplets);
+                }
+
+            }
+        }
+
+        return new ArrayList<>(uniqueTriplets.stream().toList());
+    }
 }
