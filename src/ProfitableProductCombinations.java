@@ -21,7 +21,17 @@ public class ProfitableProductCombinations {
     *
      * */
 
+    public static void main(String[] args){
+        int[] products = {100, 200, 300, 400, 500, 600};
 
+        List<List<Integer>> combinations = findTriplets(products);
+        System.out.println(combinations);
+
+        products = new int[]{50, 100, 150, 200, 250, 300, 350, 400, 450, 500};
+        combinations = findTriplets(products);
+        System.out.println(combinations);
+
+    }
     public static List<List<Integer>> findTriplets(int[] products){
 
         Set<List<Integer>> uniqueTriplets = new LinkedHashSet<>();
