@@ -1,4 +1,6 @@
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 public class ZeroingOutMatrix {
 
@@ -26,12 +28,14 @@ public class ZeroingOutMatrix {
             System.out.println(Arrays.toString(ints));
         }
 
+        System.out.println();
         int[][] matrix2 = {{0, 2, 3}, {4, 5, 6}, {7, 8, 0}};
         setZeroes(matrix2);
         for (int[] ints : matrix2) {
             System.out.println(Arrays.toString(ints));
         }
 
+        System.out.println();
         int[][] matrix3 = {{1, 0, 3}, {0, 5, 0}, {7, 0, 9}};
         setZeroes(matrix3);
         for (int[] ints : matrix3) {
@@ -44,103 +48,67 @@ public class ZeroingOutMatrix {
 
     public static void setZeroes(int[][] matrix) {
 
-        boolean[][] visited = new boolean[matrix.length][matrix.length];
+        Map<Integer, Integer>zerosTracker = new HashMap<>();
         for (int row = 0; row < matrix.length; row++) {
             for (int col = 0; col < matrix.length; col++) {
+                if (matrix[row][col] == 0) {
+                    zerosTracker.put(row,col);
+                }
+            }
+        }
 
-                if (matrix[row][col] == 0 && !visited[row][col]) {
-
-                    if (col < 1) {
-                        if (row < 1) {
-                            matrix[row + 1][col] = 0;
-                            matrix[row + 2][col] = 0;
-                            matrix[row][col + 1] = 0;
-                            matrix[row][col + 2] = 0;
-                            visited[row + 1][col] = true;
-                            visited[row + 2][col] = true;
-                            visited[row][col + 1] = true;
-                            visited[row][col + 2] = true;
-                        } else if (row > 1) {
-                            matrix[row - 1][col] = 0;
-                            matrix[row - 2][col] = 0;
-                            matrix[row][col + 1] = 0;
-                            matrix[row][col + 2] = 0;
-                            visited[row - 1][col] = true;
-                            visited[row - 2][col] = true;
-                            visited[row][col + 1] = true;
-                            visited[row][col + 2] = true;
-                        } else {
-                            matrix[row - 1][col] = 0;
-                            matrix[row + 1][col] = 0;
-                            matrix[row][col + 1] = 0;
-                            matrix[row][col + 2] = 0;
-                            visited[row - 1][col] = true;
-                            visited[row + 1][col] = true;
-                            visited[row][col + 1] = true;
-                            visited[row][col + 2] = true;
-
-                        }
-                    } else if (col > 1) {
-                        if (row < 1) {
-                            matrix[row + 1][col] = 0;
-                            matrix[row + 2][col] = 0;
-                            matrix[row][col - 1] = 0;
-                            matrix[row][col - 2] = 0;
-                            visited[row + 1][col] = true;
-                            visited[row + 2][col] = true;
-                            visited[row][col - 1] = true;
-                            visited[row][col - 2] = true;
-                        } else if (row > 1) {
-                            matrix[row - 1][col] = 0;
-                            matrix[row - 2][col] = 0;
-                            matrix[row][col - 1] = 0;
-                            matrix[row][col - 2] = 0;
-                            visited[row - 1][col] = true;
-                            visited[row - 2][col] = true;
-                            visited[row][col - 1] = true;
-                            visited[row][col - 2] = true;
-
-                        } else {
-                            matrix[row - 1][col] = 0;
-                            matrix[row + 1][col] = 0;
-                            matrix[row][col - 1] = 0;
-                            matrix[row][col - 2] = 0;
-                            visited[row - 1][col] = true;
-                            visited[row + 1][col] = true;
-                            visited[row][col - 1] = true;
-                            visited[row][col - 2] = true;
-
-                        }
-                    } else {
-                        if (row < 1) {
-                            matrix[row + 1][col] = 0;
-                            matrix[row + 2][col] = 0;
-                            matrix[row][col - 1] = 0;
-                            matrix[row][col + 1] = 0;
-                            visited[row + 1][col] = true;
-                            visited[row + 2][col] = true;
-                            visited[row][col - 1] = true;
-                            visited[row][col + 1] = true;
-                        } else if (row > 1) {
-                            matrix[row - 1][col] = 0;
-                            matrix[row - 2][col] = 0;
-                            matrix[row][col - 1] = 0;
-                            matrix[row][col + 1] = 0;
-                            visited[row - 1][col] = true;
-                            visited[row - 2][col] = true;
-                            visited[row][col - 1] = true;
-                            visited[row][col + 1] = true;
-                        } else {
-                            matrix[row - 1][col] = 0;
-                            matrix[row + 1][col] = 0;
-                            matrix[row][col - 1] = 0;
-                            matrix[row][col + 1] = 0;
-                            visited[row - 1][col] = true;
-                            visited[row + 1][col] = true;
-                            visited[row][col - 1] = true;
-                            visited[row][col + 1] = true;
-                        }
-                    }
+        for(Integer row : zerosTracker.keySet()){
+            int col = zerosTracker.get(row);
+            if(col < 1){
+                if(row < 1){
+                    matrix[row + 1][col] = 0;
+                    matrix[row + 2][col] = 0;
+                    matrix[row][col + 1] = 0;
+                    matrix[row][col + 2] = 0;
+                }else if(row > 1){
+                    matrix[row - 1][col] = 0;
+                    matrix[row - 2][col] = 0;
+                    matrix[row][col + 1] = 0;
+                    matrix[row][col + 2] = 0;
+                }else{
+                    matrix[row - 1][col] = 0;
+                    matrix[row + 1][col] = 0;
+                    matrix[row][col + 1] = 0;
+                    matrix[row][col + 2] = 0;
+                }
+            }else if(col > 1){
+                if(row < 1){
+                    matrix[row + 1][col] = 0;
+                    matrix[row + 2][col] = 0;
+                    matrix[row][col - 1] = 0;
+                    matrix[row][col - 2] = 0;
+                }else if(row > 1){
+                    matrix[row - 1][col] = 0;
+                    matrix[row - 2][col] = 0;
+                    matrix[row][col - 1] = 0;
+                    matrix[row][col - 2] = 0;
+                }else{
+                    matrix[row + 1][col] = 0;
+                    matrix[row - 1][col] = 0;
+                    matrix[row][col - 1] = 0;
+                    matrix[row][col - 2] = 0;
+                }
+            }else{
+                if(row < 1){
+                    matrix[row + 1][col] = 0;
+                    matrix[row + 2][col] = 0;
+                    matrix[row][col - 1] = 0;
+                    matrix[row][col + 1] = 0;
+                } else if (row > 1) {
+                    matrix[row - 1][col] = 0;
+                    matrix[row - 2][col] = 0;
+                    matrix[row][col - 1] = 0;
+                    matrix[row][col + 1] = 0;
+                }else{
+                    matrix[row - 1][col] = 0;
+                    matrix[row + 1][col] = 0;
+                    matrix[row][col - 1] = 0;
+                    matrix[row][col + 1] = 0;
                 }
             }
         }
