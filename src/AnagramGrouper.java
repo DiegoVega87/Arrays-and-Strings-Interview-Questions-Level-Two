@@ -37,13 +37,24 @@ public class AnagramGrouper {
 
         List<List<String>> list = groupAnagrams(words);
 
-        for(List<String> l : list){
-            System.out.println(l);
-        }
+//        for(List<String> l : list){
+//            System.out.println(l);
+//        }
 
     }
     public static List<List<String>> groupAnagrams(String[] words){
 
+        Map<char[], List<String>> groups = new HashMap<>();
 
+        for(String word : words){
+            char[] arr = word.toCharArray();
+            Arrays.sort(arr);
+            groups.put(arr, new ArrayList<>());
+        }
+
+        for(char[] s : groups.keySet()){
+            System.out.println(Arrays.toString(s));;
+        }
+        return null;
     }
 }
