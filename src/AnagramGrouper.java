@@ -1,4 +1,3 @@
-import java.security.Key;
 import java.util.*;
 
 public class AnagramGrouper {
@@ -30,19 +29,7 @@ public class AnagramGrouper {
     *   assert expectedOutput.equals(actualOutput);
     *
     * */
-    public static void main(String[] args){
 
-        String[] words = {"eat", "tea", "tan", "ate", "nat", "bat"};
-
-
-        List<List<String>> list = groupAnagrams(words);
-
-        for(List<String> l : list){
-            System.out.println(l);
-        }
-
-
-    }
     public static List<List<String>> groupAnagrams(String[] words){
 
         Map<String, List<String>> groups = new HashMap<>();
@@ -51,10 +38,13 @@ public class AnagramGrouper {
             char[] charWord = word.toCharArray();
             Arrays.sort(charWord);
             String sortedW = String.valueOf(charWord);
-
+            if(!groups.containsKey(sortedW)){
+                groups.put(sortedW, new ArrayList<>());
+            }
+            groups.get(sortedW).add(word);
         }
 
-        return null;
+        return new ArrayList<>(groups.values());
     }
 
 }
