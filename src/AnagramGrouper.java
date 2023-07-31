@@ -29,7 +29,25 @@ public class AnagramGrouper {
     *   assert expectedOutput.equals(actualOutput);
     *
     * */
+    public static void main(String[] args){
 
+        String[] words = {"eat", "tea", "tan", "ate", "nat", "bat"};
+
+        List<List<String>> list = groupAnagrams(words);
+
+        for(List<String> l : list){
+            System.out.println(l);
+        }
+
+        words = new String[]{"listen", "silent", "elbow", "below", "state", "taste"};
+        list = groupAnagrams(words);
+
+        for(List<String> l : list){
+            System.out.println(l);
+        }
+
+
+    }
     public static List<List<String>> groupAnagrams(String[] words){
 
         Map<String, List<String>> groups = new HashMap<>();
