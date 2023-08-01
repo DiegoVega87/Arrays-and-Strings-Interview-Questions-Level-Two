@@ -17,7 +17,26 @@ public class LongestPalindrome {
     *   String expectedOutput = "bab";
     * */
 
+    public static void main(String[] args){
+        String s = "racecar";
+        System.out.println(longestPalindromicSubstring(s));
 
+        s = "babad";
+        System.out.println(longestPalindromicSubstring(s));
+
+        s = "babad";
+        System.out.println(longestPalindromicSubstring(s));
+
+        s = "";
+        System.out.println(longestPalindromicSubstring(s));
+
+        s = null;
+        System.out.println(longestPalindromicSubstring(s));
+
+        s = "babadd";
+        System.out.println(longestPalindromicSubstring(s));
+
+    }
     public static String longestPalindromicSubstring(String s){
 
         if( s == null || s.isEmpty()){
