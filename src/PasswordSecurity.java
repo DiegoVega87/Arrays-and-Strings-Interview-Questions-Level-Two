@@ -1,3 +1,6 @@
+import java.util.HashSet;
+import java.util.Set;
+
 public class PasswordSecurity {
 
     /*
@@ -15,4 +18,30 @@ public class PasswordSecurity {
     *   int expectedOutput = 1;
     *
     * */
+
+
+    public static int longestSubstringWithoutRepeatingChars(String password){
+
+        if(password == null || password.equals("")){
+            return 0;
+        }
+
+        Set<Character> longestSubStr = new HashSet<>();
+
+        int i = 0;
+        int j = 0;
+        int maxLength = 0;
+        while(j < password.length()){
+
+            if(!longestSubStr.contains(password.charAt(j))){
+                longestSubStr.add(password.charAt(j));
+                j++;
+                maxLength = Math.max(maxLength, j - i);
+            }else{
+                longestSubStr.remove(password.charAt(i));
+                i++;
+            }
+        }
+        return maxLength;
+    }
 }
