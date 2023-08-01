@@ -1,3 +1,6 @@
+
+import java.util.Stack;
+
 public class LongestPalindrome {
 
     /*
@@ -5,6 +8,43 @@ public class LongestPalindrome {
     * The palindromic substring can help us identify the words that can be used as catchy slogans or product names.
     * Can you create a function that takes a string as input and returns the longest palindromic substring in it?
     *
+    * Example 1:
+    *   String s = "racecar";
+    *   String expectedOutput = "racecar";
     *
+    * Example 2:
+    *   String s = "babad";
+    *   String expectedOutput = "bab";
     * */
+
+
+    public static String longestPalindromicSubstring(String s){
+
+        if( s == null || s.isEmpty()){
+            return "";
+        }
+
+        Stack<String> substrings = new Stack<>();
+
+        for(int i = 1; i <= s.length(); i++){
+            String subString = s.substring(0,i);
+            if(isPalindromic(subString)){
+                substrings.push(subString);
+            }
+        }
+
+        return substrings.pop();
+
+    }
+
+    private static boolean isPalindromic(String subString){
+
+        int length = subString.length();
+        for(int i = 0; i < length; i++){
+            if(subString.charAt(i) != subString.charAt(length-1-i)){
+                return false;
+            }
+        }
+        return true;
+    }
 }
