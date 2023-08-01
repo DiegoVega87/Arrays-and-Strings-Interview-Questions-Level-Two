@@ -6,5 +6,13 @@ public class PasswordSecurity {
     * we require a function that takes a password string as input and returns the length of the longest substring
     * without any repeated characters.
     *
+    * Example 1:
+    *   String password = "abcabcbb";
+    *   expectedOutput = 3;
+    *
+    * Example 2:
+    *   String password = "bbbbb";
+    *   int expectedOutput = 1;
+    *
     * */
 }
