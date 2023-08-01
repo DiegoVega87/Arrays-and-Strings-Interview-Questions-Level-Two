@@ -18,7 +18,28 @@ public class PasswordSecurity {
     *   int expectedOutput = 1;
     *
     * */
+    public static void main(String[] args){
+        String password = "a";
+        System.out.println(longestSubstringWithoutRepeatingChars(password));
 
+        password = "aabcdefg";
+        System.out.println(longestSubstringWithoutRepeatingChars(password));
+
+        password = "abcdefggh";
+        System.out.println(longestSubstringWithoutRepeatingChars(password));
+
+        password = "";
+        System.out.println(longestSubstringWithoutRepeatingChars(password));
+
+        password = "abcbde";
+        System.out.println(longestSubstringWithoutRepeatingChars(password));
+
+        password = "abcdefg";
+        System.out.println(longestSubstringWithoutRepeatingChars(password));
+
+        password = null;
+        System.out.println(longestSubstringWithoutRepeatingChars(password));
+    }
 
     public static int longestSubstringWithoutRepeatingChars(String password){
 
