@@ -59,7 +59,7 @@ public class LongestPalindrome {
     private static boolean isPalindromic(String subString){
 
         int length = subString.length();
-        for(int i = 0; i < length; i++){
+        for(int i = 0; i < length/2; i++){
             if(subString.charAt(i) != subString.charAt(length-1-i)){
                 return false;
             }
