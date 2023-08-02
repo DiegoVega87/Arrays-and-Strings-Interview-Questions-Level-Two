@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class IdentifyingTrends {
 
     /*
@@ -18,4 +20,36 @@ public class IdentifyingTrends {
     *   Output: false
     *   Explanation: There is no triplet (i, j, k) such that i < j < k and prices[i] < prices[j] < prices[k].
     * * */
+
+
+    public static boolean findProfitableTriplets(int[] prices){
+
+        if(prices.length < 3){
+            return false;
+        }
+
+        int i = 0, j = i + 1, k = j + 1;
+
+        while(k < prices.length){
+
+            if((prices[i] < prices[j]) && (prices[j] < prices[k])){
+                return true;
+            }
+
+            if(prices[i] >= prices[j]){
+                i++;
+                j++;
+                k++;
+            }else if(prices[j] >= prices[k]){
+                j++;
+                k++;
+            }
+
+            if(k < prices.length && prices[j] >= prices[k] ){
+                k++;
+            }
+        }
+
+        return false;
+    }
 }
