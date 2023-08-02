@@ -20,7 +20,29 @@ public class IdentifyingTrends {
     *   Output: false
     *   Explanation: There is no triplet (i, j, k) such that i < j < k and prices[i] < prices[j] < prices[k].
     * * */
+    public static void main(String[] args){
 
+        int[] prices = {1, 2, 3, 4, 5};
+        System.out.println(findProfitableTriplets(prices));
+
+        prices = new int[]{5, 4, 3, 2, 1};
+        System.out.println(findProfitableTriplets(prices));
+
+        prices = new int[]{1, 2, 3, 2, 4};
+        System.out.println(findProfitableTriplets(prices));
+
+        prices = new int[]{1, 2, 3, 2, 1};
+        System.out.println(findProfitableTriplets(prices));
+
+        prices = new int[]{1, 2, 3, 2, 5};
+        System.out.println(findProfitableTriplets(prices));
+
+        prices = new int[]{165, 212, 3165, 212345, 5};
+        System.out.println(findProfitableTriplets(prices));
+
+        prices = new int[]{1, 4, 2, 0, 3};
+        System.out.println(findProfitableTriplets(prices));
+    }
 
     public static boolean findProfitableTriplets(int[] prices){
 
